@@ -3,6 +3,9 @@ package thread.creation.exam2;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Thread 객체들을 만들어 각각 작업할 수 있도록 구현
+ */
 public class Main {
 
     public static final int MAX_PASSWORD = 9999;

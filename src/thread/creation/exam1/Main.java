@@ -1,5 +1,8 @@
 package thread.creation.exam1;
 
+/**
+ * 기본 thread 생성 함수 적용
+ */
 public class Main {
     public static void main(String[] args) {
         Thread thread = new Thread(() -> {
