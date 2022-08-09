@@ -1,7 +1,7 @@
 package thread.creation.exam3;
 
 /**
- * 인터럽트한 스레드가 이미 인터럽트 당했을 경우 InterruptedException을 발생시킨다.
+ * 이미 인터럽트를 요청한 스레드가 interrupt() 메서드를 호출할 경우 InterruptedException을 발생시킨다.
  */
 public class Main {
 
