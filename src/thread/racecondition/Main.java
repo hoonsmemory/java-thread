@@ -1,13 +1,11 @@
 package thread.racecondition;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * race condition 문제
  * 문제 1) InventoryCounter가 두 스레드 모두로 전달되는 공유된 객체라서 items 멤버 변수 또한 두 스레드에서 공유되고 액세스 가능해진다는 것
  * 문제 2) 두 스레드가 increment(items++) 메서드와 decrement(items--) 메서드를 호출해서 수행하는 작업이 동시에 실행되는 점(원자적 작업이 아니다.)
- *
- * CPU는 메모리에 적재되어 있는 값을 직접적으로 연산 하는것은 불가능하다.
- * 메모리에 적재되어 있는 값을 레지스터로 가져와서 연산을 수행하고 연산 결과를 레지스터에서 다시 메모리에 써야 한다.
- * 위의 과정은 읽기, 연산, 쓰기의 명령어가 각각 일어나게 된다.
  *
  * 예시
  * 1. 스레드-1 : items = 0 읽기
@@ -17,10 +15,19 @@ package thread.racecondition;
  * 5. 스레드-1 : itmes = 1 쓰기
  * 6. 스레드-2 : items = -1 쓰기
  *
- * items는 0이 되어야 하지만 두 스레드가 동시에 작업하다보니 이러한 문제가 발생되었다.
+ * items는 0이 되어야 하지만 두 스레드가 동시에 작업하다보니 마지막 쓰기를 작업한 items = -1 이 되는 문제가 발생되었다.
  *
  * 해결 방법은 원자적(atomic) 명령어를 쓰는 것이다.
- * 1. 자바에서는 synchronized 키워드를 쓰는 방법이 있다.
+ * 1. synchronized 키워드
+ *    하지만 synchronized 키워드를 사용할 경우 멀티 스레드 환경에서 마치 싱글 스레드처럼 동시적 작업을 하지 않는다.
+ *    그 이유는 다른 스레드에서 synchronized 키워드가 붙은 메서드를 호출할 경우 자기 차례가 오기까지 blocking 상태로 있기 때문이다.
+ *    synchronized 키워드는 오히려 컨텍스트 스위칭, 메모리 오버헤드 등 자원 낭비가 심할 수 있다.
+ *
+ * 2. atomic 키워드
+ *    atomic 키워드를 적용한 변수는 blocking을 사용하는 synchronized 키워드와는 달리 non-blocking 하면서 원자성을 보장하여 동기화 문제를 해결한다.
+ *    atomic 키워드는 CAS(Compare And Swap) 알고리즘을 사용한다.
+ *    즉 메인 메모리에 있는 기존의 값과 현재 가지고 있는 기존의 값이 같을 경우에만 연산이 일어난 값으로 변경을 하기 때문이다.
+ *
  */
 public class Main {
 
@@ -70,18 +77,18 @@ public class Main {
 
     private static class InventoryCounter {
 
-        private int items = 0;
+        private AtomicInteger items = new AtomicInteger(0);
 
         public void increment() {
-            items++;
+            items.incrementAndGet();
         }
 
         public void decrement() {
-            items--;
+            items.decrementAndGet();
         }
 
         public  int getItems() {
-            return items;
+            return items.get();
         }
     }
 }
