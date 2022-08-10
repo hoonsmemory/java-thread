@@ -1,7 +1,7 @@
-package thread.creation.exam3;
+package thread.interrupt.exam1;
 
 /**
- * 이미 인터럽트를 요청한 스레드가 interrupt() 메서드를 호출할 경우 InterruptedException을 발생시킨다.
+ * 일시 정지 상태의 스레드에서 InterruptedException 예외를 발생시켜 종료 상태로 갈 수 있도록 한다.
  */
 public class Main {
 

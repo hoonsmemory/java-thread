@@ -1,4 +1,4 @@
-package thread.creation.exam4;
+package thread.interrupt.exam2;
 
 import java.math.BigInteger;
 
