@@ -23,9 +23,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  *    그 이유는 다른 스레드에서 synchronized 키워드가 붙은 메서드를 호출할 경우 자기 차례가 오기까지 blocking 상태로 있기 때문이다.
  *    synchronized 키워드는 오히려 컨텍스트 스위칭, 메모리 오버헤드 등 자원 낭비가 심할 수 있다.
  *
- * 2. atomic 키워드
- *    atomic 키워드를 적용한 변수는 blocking을 사용하는 synchronized 키워드와는 달리 non-blocking 하면서 원자성을 보장하여 동기화 문제를 해결한다.
- *    atomic 키워드는 CAS(Compare And Swap) 알고리즘을 사용한다.
+ * 2. atomic 변수
+ *    atomic 변수는 blocking을 사용하는 synchronized 키워드와는 달리 non-blocking 하면서 원자성을 보장하여 동기화 문제를 해결한다.
+ *    atomic 변수는 CAS(Compare And Swap) 알고리즘을 사용한다.
  *    즉 메인 메모리에 있는 기존의 값과 현재 가지고 있는 기존의 값이 같을 경우에만 연산이 일어난 값으로 변경을 하기 때문이다.
  *
  */
