@@ -12,6 +12,13 @@ import java.nio.file.Paths;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * JMeter 프로그램을 이용하여 Throughput을 측정
+ * 스레드의 개수를 1개부터 점점 증가하여 성능 테스트를 진행한다.
+ *
+ * 스레드가 더 많다는 것은 더 많은 요청을 처리할 수 있다는 뜻이지만,
+ * 오버헤드와 컨텍스트 스위칭도 더 많아지기 때문에 최적의 스레드 개수를 미리 알 수 있는 방법은 없다.
+ */
 public class ThroughputHttpServer {
     private static final String INPUT_FILE = "resource/throughput/war_and_peace.txt";
     private static final int NUMBER_OF_THREAD = 8;
