@@ -5,6 +5,10 @@ import java.math.BigInteger;
 /**
  * for문 같이 루프가 돌고 있을 경우 interupt() 메서드가 동작되지 않는다.
  * 따라서 Thread.currentThread().isInterrupted() 메서드로 체크가 필요하다.
+ *
+ * interrupt() 메소드는 스레드가 일시 정지 상태에 있을 때 InterruptedException 예외를 발생시키는 역할을 한다.
+ * 주목 할 점은 스레드가 실행 대기 또는 실행 상태에 있을 때 interrupt() 메소드가 실행되면 즉시 InterruptedException 예외가 발생하지 않고,
+ * 스레드가 미래에 일시 정지 상태가 되면 즉시 InterruptedException 예외가 발생한다는 것이다.
  */
 public class Main {
 
