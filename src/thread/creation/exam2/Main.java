@@ -1,5 +1,6 @@
 package thread.creation.exam2;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -20,7 +21,7 @@ public class Main {
         DescendingHacker descendingHacker = new DescendingHacker(vault);
         PoliceThread policeThread = new PoliceThread();
 
-        List<Thread> threads = List.of(ascendingHacker, descendingHacker, policeThread);
+        List<Thread> threads = Arrays.asList(ascendingHacker, descendingHacker, policeThread);
 
         threads.stream().forEach(thread -> thread.start());
     }
