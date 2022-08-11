@@ -2,6 +2,7 @@ package thread.join;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        List<Long> inputNumbers = List.of(0L, 3435L, 35435L, 2324L, 4656L, 23L, 5556L, 100000L);
+        List<Long> inputNumbers = Arrays.asList(0L, 3435L, 35435L, 2324L, 4656L, 23L, 5556L, 100000L);
         List<FactorialThread> threads = new ArrayList<>();
 
         for (Long inputNumber : inputNumbers) {
